@@ -4,18 +4,10 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
 	selector: 'home-view',
-	template: `<h3 class="test">awdawdawd</h3>`
+  templateUrl: './home.component.html'
 })
 export class HomeView {
-  public subs: string;
 
   constructor(private http: TransferHttp) {}
-
-  /*ngOnInit() {
-    this.http.get('http://localhost:8000/data').subscribe(res => {
-      this.subs = `${res.greeting} ${res.name}`;
-    }, err => {
-      console.log(err);
-    });
-  }*/
+  
 }

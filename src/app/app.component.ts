@@ -1,23 +1,37 @@
-import { Component, OnInit } from '@angular/core'
-import { TransferState } from '../modules/transfer-state/transfer-state';
+import {Component, OnInit} from '@angular/core';
+import {LoginService} from './services/login.service';
 
 @Component({
-	selector: 'demo-app',
-	template: `
-	  <h1>Universal Demo</h1>
-	  <a routerLink="/">Home</a>
-	  <a routerLink="/lazy">Lazy</a>
-	  <router-outlet></router-outlet>
-	`,
-  styles: [
-    `h1 {
-      color: green;
-    }`
-  ]
+  selector: 'demo-app',
+  templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
-  constructor(private cache: TransferState) {}
+  constructor(private github: LoginService) {
+  }
+
   ngOnInit() {
-    this.cache.set('cached', true);
+    this.checkLogIn();
+    window.addEventListener('message', (event) => {
+      if (event.data.jwt) {
+        console.log(event.data.jwt);
+        this.github.setToken(event.data.jwt);
+        this.checkLogIn();
+      }
+    });
+  }
+
+  public logged: boolean = true;
+
+  public logIn(): void {
+    this.github.logIn();
+  }
+
+  public logOff(): void {
+    this.github.logOff();
+    this.logged = false;
+  }
+
+  private checkLogIn(): void {
+    this.logged = this.github.isLogged();
   }
 }
