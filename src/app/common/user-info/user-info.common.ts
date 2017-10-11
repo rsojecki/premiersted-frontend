@@ -12,6 +12,7 @@ export class UserInfoComponent {
       const data = github.getUserData();
       console.log(data);
       this.name = data.meta.name;
+      this.id = data.id;
       this.avatarUrl = data.meta.avatar_url;
       this.show = true;
     } else {
@@ -19,7 +20,8 @@ export class UserInfoComponent {
     }
   }
 
-  public show:boolean;
+  public show:boolean = false;
   public name:string;
+  public id:string = '';
   public avatarUrl:string;
 }

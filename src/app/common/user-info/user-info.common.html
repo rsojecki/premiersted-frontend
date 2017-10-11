@@ -1,4 +1,4 @@
-<span class="level-item has-text-centered github">
+<span *ngIf="show" class="level-item has-text-centered github" routerLink="/user/{{id}}">
   <img src="{{avatarUrl}}">
   <span id="user-info">
     {{name}}

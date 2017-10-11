@@ -3,16 +3,24 @@ import {LoginService} from '../services/login.service';
 
 @Component({
 	selector: 'demo-app',
-  templateUrl: './adminPanel.component.html'
+  templateUrl: './users.component.html'
 })
-export class AdminPanel {
+export class UsersComponent {
 
-  constructor(private github:LoginService) {}
+  constructor(private github:LoginService) {
+    this.listUsers();
+  }
+
+  public users:any = [];
 
   public listUsers():any {
     this.github.getUsers().subscribe(response => {
+      this.users = response;
       console.log(response);
     });
+  }
+  public goToUser(id:string){
+
   }
   
 }

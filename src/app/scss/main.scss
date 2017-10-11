@@ -4,12 +4,24 @@
   background-image: url('./../img/test.jpg');
 }
 #main-image {
+  margin-top: -170px;
+  margin-bottom: 20px;
   display: block;
   text-indent: -9999px;
-  width: 600px;
+  width: 500px;
   height: 400px;
-  background: url('./../img/test.jpg');
-  background-position: center;
+  background: url('./../img/premiersted_logo.png');
+  background-size:cover;
+}
+
+#game-image {
+  display: block;
+  margin-bottom: 20px;
+  text-indent: -9999px;
+  width: 400px;
+  height: 400px;
+  background: url('./../img/championschib_logo.png');
+  background-size:cover;
 }
 .center {
   margin: auto;

@@ -1,14 +1,24 @@
+<!-- Main container -->
 <section class="section">
-  <div class="container">
-    <h1 class="title">
-      Hello World
+  <img src="http://localhost:8080/premiersted_logo.svg">
+  <div id="main-image" class="center">
+  </div>
+  <div class="container" style="width: 750px">
+    <h1 class="title center" style="text-align: center">
+      Wybierz ligę:
     </h1>
-    <p class="subtitle">
-      My first website with <strong>Bulma</strong>!
-    </p>
-    <league-tile></league-tile>
-    <league-tile></league-tile>
-    <league-tile></league-tile>
-    <league-tile></league-tile>
+    <div *ngFor="let game of games" class="container">
+      <div class="box" style="width: 750px" routerLink="/game/{{game.id}}">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>{{game.name}}</strong> Status: {{game.status}} <small>{{game.location}}</small>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
 </section>

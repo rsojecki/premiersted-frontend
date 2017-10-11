@@ -1,9 +1,15 @@
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {Http, Response} from '@angular/http';
+import { Headers } from '@angular/http';
+import 'rxjs/add/operator/catch';
 @Injectable()
 export class LoginService {
 
-  constructor(){
-    this.user = this.getTokenData();
+  constructor(private http: Http) {
+    if(this.isLogged()){
+      this.user = this.getTokenData();
+    }
   }
 
   public logIn(): any {
@@ -15,6 +21,7 @@ export class LoginService {
       }
       this.user = this.getTokenData();
       console.log(this.user);
+      location.reload();
     };
     send();
   }
@@ -32,6 +39,7 @@ export class LoginService {
     console.log(this.getTokenData());
     this.user = {};
     localStorage.removeItem('premiersted');
+    location.reload();
   }
 
   public isLogged(): boolean {
@@ -45,17 +53,67 @@ export class LoginService {
     }
   }
 
-  public getUserData():any {
-    console.log(this.user)
+  public getUserData(): any {
+    console.log(this.user);
     return this.user;
   }
 
-  public getTokenData():any {
+  public getTokenData(): any {
     const token = this.getToken();
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace('-', '+').replace('_', '/');
     return JSON.parse(window.atob(base64));
   }
 
-  private user:any = {};
+  private createAuthorizationHeader(headers: Headers) {
+    //headers.append('auth-token', this.getToken());
+  }
+
+  public getUsers(): Observable<any> {
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return this.http.get('https://api.premiersted.schibsted.ga/users')
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  public getUser(userId:string): Observable<any> {
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return this.http.get('http://7428da61.eu.ngrok.io/users/' + userId)
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  public setUser(user:any): Observable<any> {
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return this.http.post('https://api.premiersted.schibsted.ga/users', user)
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  public getGames(): Observable<any> {
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return this.http.get('http://7428da61.eu.ngrok.io/games')
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  public getGame(gameId:string): Observable<any> {
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return this.http.get('http://7428da61.eu.ngrok.io/games/' + gameId)
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  private user: any = {};
 }
