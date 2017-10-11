@@ -1,0 +1,8 @@
+/node_modules/
+/dist/
+/lib/
+/yarn.lock
+*.log.*
+/prod-test/
+/prod/
+.idea
