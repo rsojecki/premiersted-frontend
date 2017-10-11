@@ -2,13 +2,19 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class LoginService {
 
+  constructor(){
+    this.user = this.getTokenData();
+  }
+
   public logIn(): any {
-    const w = window.open('http://10.168.20.144:7000/_github', 'Github Login');
+    const w = window.open('https://api.premiersted.schibsted.ga/_github', 'Github Login');
     const send = () => {
       w.postMessage('ready?', '*');
       if (!w.closed) {
         setTimeout(send, 150);
       }
+      this.user = this.getTokenData();
+      console.log(this.user);
     };
     send();
   }
@@ -23,6 +29,8 @@ export class LoginService {
   }
 
   public logOff(): void {
+    console.log(this.getTokenData());
+    this.user = {};
     localStorage.removeItem('premiersted');
   }
 
@@ -36,4 +44,18 @@ export class LoginService {
       return true;
     }
   }
+
+  public getUserData():any {
+    console.log(this.user)
+    return this.user;
+  }
+
+  public getTokenData():any {
+    const token = this.getToken();
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(window.atob(base64));
+  }
+
+  private user:any = {};
 }

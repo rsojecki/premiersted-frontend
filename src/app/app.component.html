@@ -1,8 +1,8 @@
 <!-- Main container -->
-<nav class="level">
-  <p class="level-item has-text-centered">
-    <a class="link is-info">Premiersted</a>
-  </p>
+<nav class="level" style="padding: 10px">
+  <div class="level-left">
+    <user-info></user-info>
+  </div>
   <div class="level-right">
     <p *ngIf="!logged" class="level-item has-text-centered">
       <a class="button is-primary" (click)="logIn()">Log In</a>
@@ -14,8 +14,11 @@
 </nav>
 
 <section class="section">
+  <img src="http://localhost:8080/premiersted_logo.svg">
+  <div id="main-image" class="center">
+  </div>
   <div class="container">
-    <h1 class="title">
+    <h1 class="title center" style="text-align: center">
       Wybierz ligę:
     </h1>
     <league-tile></league-tile>

@@ -8,6 +8,7 @@ import { HomeView } from './home/home-view.component';
 import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
 import { LeagueTileComponent } from './common/league-tile/league-tile.common';
 import {LoginService} from './services/login.service';
+import {UserInfoComponent} from './common/user-info/user-info.common';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import {LoginService} from './services/login.service';
       { path: 'lazy', loadChildren: './+lazy/lazy.module#LazyModule'}
     ])
 	],
-	declarations: [ AppComponent, HomeView, LeagueTileComponent ],
+	declarations: [ AppComponent, HomeView, LeagueTileComponent, UserInfoComponent ],
   exports: [ AppComponent ],
   providers: [
     LoginService

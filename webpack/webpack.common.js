@@ -14,7 +14,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.ts$/, loader: '@ngtools/webpack' },
-      { test: /\.css$/, loader: 'raw-loader' },
+      { test: /\.css$/, loader: 'css-loader' },
       { test: /\.scss|sass$/, loaders: ['style-loader', 'css-loader', "sass-loader"] },
       { test: /\.html$/, loader: 'raw-loader' },
       { test: /\.(ttf|eot|svg|jpg|jpeg|png|gif|otf|woff(2)?)(\?[a-z0-9=&.]+)?$/, loader: 'file-loader' }
