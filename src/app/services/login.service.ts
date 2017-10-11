@@ -96,10 +96,14 @@ export class LoginService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  public getGames(): Observable<any> {
+  public getGames(query:any): Observable<any> {
+    let searchString:string = '';
+    if (query!==null){
+      searchString = '?name=' + query + '&limit=10';
+    }
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
-    return this.http.get('http://7428da61.eu.ngrok.io/games')
+    return this.http.get('http://7428da61.eu.ngrok.io/games' + searchString)
       .map((res: Response) => {
         return res.json();
       })

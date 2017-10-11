@@ -4,9 +4,8 @@
   <div id="main-image" class="center">
   </div>
   <div class="container" style="width: 750px">
-    <h1 class="title center" style="text-align: center">
-      Wybierz ligę:
-    </h1>
+    <input class="input" type="text" placeholder="Wyszukaj ligę" [(ngModel)]="formInput" (ngModelChange)="search($event)" style="margin-bottom: 20px">
+
     <div *ngFor="let game of games" class="container">
       <div class="box" style="width: 750px" routerLink="/game/{{game.id}}">
         <article class="media">

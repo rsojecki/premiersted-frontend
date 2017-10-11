@@ -12,12 +12,14 @@ import {AdminPanel} from './adminPanel/adminPanel.component';
 import {UsersComponent} from './users/users.component';
 import {UserComponent} from './user/user.component';
 import {GameComponent} from './game/game.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpModule,
     TransferHttpModule,
+    FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
       {path: 'admin', component: AdminPanel, pathMatch: 'full'},
