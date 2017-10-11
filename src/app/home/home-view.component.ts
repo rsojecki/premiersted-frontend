@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
 	selector: 'home-view',
-	template: `<h3>awdawdawd</h3>`
+	template: `<h3 class="test">awdawdawd</h3>`
 })
 export class HomeView {
   public subs: string;
