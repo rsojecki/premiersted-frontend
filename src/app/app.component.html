@@ -1,0 +1,27 @@
+<nav class="level" style="padding: 10px">
+  <div class="level-left">
+    <user-info></user-info>
+  </div>
+  <div class="level-right">
+    <p *ngIf="!logged" class="level-item has-text-centered">
+      <a class="button is-primary" (click)="logIn()">Log In</a>
+    </p>
+    <p *ngIf="logged" class="level-item has-text-centered">
+      <a class="button is-primary" (click)="logOff()">Log Off</a>
+    </p>
+  </div>
+</nav>
+<div *ngIf="logged">
+  <router-outlet></router-outlet>
+</div>
+<div *ngIf="!logged">
+  <section class="section">
+    <div id="main-image" class="center">
+    </div>
+    <div class="container" style="width: 750px">
+      <h1 class="title center" style="text-align: center">
+        Zaloguj się aby kontynuować.
+      </h1>
+    </div>
+  </section>
+</div>
