@@ -1,40 +1,27 @@
 const webpack = require('webpack');
-const path = require('path');
 const {resolve} = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
 const {AotPlugin} = require('@ngtools/webpack');
-
-const tsconfigs = {
-  client: root('./src/tsconfig.browser.json')
-};
-
-const aotTsconfigs = {
-  client: root('./src/tsconfig.browser.json')
-};
-
-function getAotPlugin(platform, aot) {
-  return new AotPlugin({
-    tsConfigPath: aot ? aotTsconfigs[platform] : tsconfigs[platform],
-    skipCodeGeneration: !aot
-  });
-}
 
 function root(path) {
   return resolve(__dirname, path);
 }
 
 const webpackConfig = {
-  entry: root('./src/main.browser.ts'),
+  entry: root('src/main.browser.ts'),
   output: {
     path: root('dist/public'),
     filename: 'client.js'
   },
   target: 'web',
   plugins: [
-    getAotPlugin('client', !!{}),
+    new AotPlugin({
+      tsConfigPath: root('src/tsconfig.browser.json'),
+      skipCodeGeneration: false
+    }),
     new HtmlWebpackPlugin({
-      template: root('./src/index.html'),
+      template: root('src/index.html'),
       output: root('dist'),
       inject: 'head'
     }),
@@ -44,7 +31,7 @@ const webpackConfig = {
   ],
   resolve: {
     extensions: ['.ts', '.js'],
-    modules: [path.resolve(__dirname, 'node_modules')]
+    modules: [root('node_modules')]
   },
   module: {
     loaders: [
