@@ -4,8 +4,11 @@
   "main": "index.js",
   "repository": {},
   "scripts": {
+    "start": "node --max_old_space_size=40960 node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --progress --port 8000 --open --content-base src",
+    "build-local": "webpack --progress",
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack",
+    "build-prod": "webpack -p --config webpack.config-prod.js;"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -39,10 +42,13 @@
     "typescript": "^2.2.1",
     "webpack": "^2.2.1",
     "webpack-merge": "^4.0.0",
+    "webpack-dev-server": "2.1.0-beta.11",
     "style-loader": "^0.13.1",
     "css-loader": "^0.25.0",
     "node-sass": "^3.13.0",
     "sass-loader": "^6.0.6",
-    "file-loader": "^0.9.0"
+    "file-loader": "^0.9.0",
+    "awesome-typescript-loader": "^3.2.3",
+    "image-webpack-loader": "^3.4.2"
   }
 }
