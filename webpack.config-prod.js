@@ -2,9 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const {resolve} = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
-
 const {AotPlugin} = require('@ngtools/webpack');
 
 const tsconfigs = {
@@ -23,8 +21,6 @@ function getAotPlugin(platform, aot) {
 }
 
 function root(path) {
-  console.log('test');
-  console.log(resolve(__dirname, path));
   return resolve(__dirname, path);
 }
 
@@ -72,7 +68,8 @@ const webpackConfig = {
       {test: /\.scss$/, loaders: ['style-loader', 'css-loader', "sass-loader"]},
       {test: /\.html$/, loader: 'raw-loader'},
       {test: /\.(ttf|eot|otf|woff(2)?)(\?[a-z0-9=&.]+)?$/, loader: 'file-loader'},
-      {test: /\.(gif|png|jpe?g|svg)$/i,
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           'file-loader',
           {
@@ -82,18 +79,16 @@ const webpackConfig = {
                 progressive: true,
                 quality: 65
               },
-              // optipng.enabled: false will disable optipng
               optipng: {
-                enabled: false
+                enabled: true
               },
               pngquant: {
                 quality: '65-90',
                 speed: 4
               },
               gifsicle: {
-                interlaced: false
+                interlaced: true
               },
-              // the webp option will enable WEBP
               webp: {
                 quality: 75
               }

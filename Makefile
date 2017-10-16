@@ -1,9 +1,3 @@
-install:
-	npm install
-run-local:
-	docker-compose up -d
-	npm run watch
-
 build:
 	docker build -t premiersted-frontend:latest .
 

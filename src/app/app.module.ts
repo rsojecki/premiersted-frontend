@@ -4,7 +4,6 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
-import {TransferHttpModule} from '../modules/transfer-http/transfer-http.module';
 import {LeagueTileComponent} from './common/league-tile/league-tile.common';
 import {LoginService} from './services/login.service';
 import {UserInfoComponent} from './common/user-info/user-info.common';
@@ -12,13 +11,12 @@ import {AdminPanel} from './adminPanel/adminPanel.component';
 import {UsersComponent} from './users/users.component';
 import {UserComponent} from './user/user.component';
 import {GameComponent} from './game/game.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpModule,
-    TransferHttpModule,
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},

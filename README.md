@@ -2,15 +2,14 @@
 
 ## Running local dev
 ```
-make install
-make run-local
+npm install
+npm start
 ```
 
 Page is accessible at http://localhost:8080
 
 ## Running production environment
 ```
-make install
 make build
 make run
 ```
