@@ -3,4 +3,4 @@ build:
 
 run:
 	docker rm -f premiersted-frontend
-	docker run --name premiersted-frontend -p 8080:80 premiersted-frontend:latest
+	docker run --name premiersted-frontend -p 80:80 premiersted-frontend:latest
