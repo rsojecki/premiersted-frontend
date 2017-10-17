@@ -1,37 +1,28 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from './services/login.service';
+import {AuthorizationService} from './services/authorization.service';
 
 @Component({
   selector: 'demo-app',
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
-  constructor(private github: LoginService) {
+  constructor(private auth: AuthorizationService) {
+
   }
 
-  ngOnInit() {
-    this.checkLogIn();
-    window.addEventListener('message', (event) => {
-      if (event.data.jwt) {
-        console.log(event.data.jwt);
-        this.github.setToken(event.data.jwt);
-        this.checkLogIn();
-      }
-    });
+  public ngOnInit():void {
+    console.log(this.auth.isAuthorized());
   }
-
-  public logged: boolean = true;
 
   public logIn(): void {
-    this.github.logIn();
+    this.auth.logIn();
   }
 
   public logOff(): void {
-    this.github.logOff();
-    this.logged = false;
+    this.auth.logOff();
   }
 
-  private checkLogIn(): void {
-    this.logged = this.github.isLogged();
+  public checkAuth():void {
+    console.log(this.auth.isAuthorized());
   }
 }
