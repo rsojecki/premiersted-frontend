@@ -16,7 +16,7 @@ export class UserComponent {
       const userId:string = params['id'];
       api.getUser(userId).subscribe(response => {
         this.user = this.UserData.createFrom(response);
-      })
+      });
     });
   }
 }
