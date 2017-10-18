@@ -1,40 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import {LoginService} from '../services/login.service';
-import { ActivatedRoute } from '@angular/router';
+import {Component} from '@angular/core';
+import {User} from './user';
+import {ApiService} from '../services/api.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-	selector: 'demo-app',
-  templateUrl: './user.component.html'
+  selector: 'demo-app',
+  templateUrl: 'user.component.html'
 })
-export class UserComponent implements OnInit {
+export class UserComponent {
 
-  constructor(private route: ActivatedRoute, private github:LoginService) {
-  }
+  public user: User;
 
-  id: string;
-  private sub: any;
-  public user:any = {};
-  public name:String = "";
-  public login:String = "";
-  public avatarUrl:String = "";
-
-  ngOnInit() {
-      this.sub = this.route.params.subscribe(params => {
-        this.id = params['id'];
-        console.log(this.id);
-        this.github.getUser(this.id).subscribe(response => {
-          console.log(response);
-          this.user = response;
-          this.name = response.meta.name;
-          this.login = response.meta.login;
-          this.avatarUrl = response.meta.avatar_url;
-          console.log(response);
-        });
+  constructor(private route: ActivatedRoute, private api: ApiService, private UserData:User) {
+    this.route.params.subscribe(params => {
+      const userId:string = params['id'];
+      api.getUser(userId).subscribe(response => {
+        this.user = this.UserData.createFrom(response);
+      })
     });
   }
-
-  private getUser():void {
-    //this.github.getUser()
-  }
-  
 }

@@ -4,14 +4,12 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
-import {LeagueTileComponent} from './common/league-tile/league-tile.common';
-import {LoginService} from './services/login.service';
-import {UserInfoComponent} from './common/user-info/user-info.common';
-import {AdminPanel} from './adminPanel/adminPanel.component';
-import {UsersComponent} from './users/users.component';
-import {UserComponent} from './user/user.component';
-import {GameComponent} from './game/game.component';
+import {ApiService} from './services/api.service';
 import {FormsModule} from '@angular/forms';
+import {AuthorizationService} from './services/authorization.service';
+import {Meta} from './user/meta';
+import {User} from './user/user';
+import {UserComponent} from './user/user.component';
 
 @NgModule({
   imports: [
@@ -20,17 +18,16 @@ import {FormsModule} from '@angular/forms';
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
-      {path: 'admin', component: AdminPanel, pathMatch: 'full'},
-      {path: 'users', component: UsersComponent, pathMatch: 'full'},
-      {path: 'user/:id', component: UserComponent, pathMatch: 'full'},
-      {path: 'game/:id', component: GameComponent, pathMatch: 'full'},
-      {path: 'lazy', loadChildren: './+lazy/lazy.module#LazyModule'}
+      {path: 'user/:id', component: UserComponent, pathMatch: 'full'}
     ])
   ],
-  declarations: [AppComponent, HomeComponent, UsersComponent, UserComponent, GameComponent, LeagueTileComponent, UserInfoComponent, AdminPanel],
+  declarations: [AppComponent, HomeComponent, UserComponent],
   exports: [AppComponent],
   providers: [
-    LoginService
+    ApiService,
+    AuthorizationService,
+    User,
+    Meta
   ]
 })
 export class AppModule {
