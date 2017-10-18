@@ -10,9 +10,14 @@ import {AuthorizationService} from './services/authorization.service';
 import {Meta} from './user/meta';
 import {User} from './user/user';
 import {UserComponent} from './user/user.component';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     CommonModule,
     HttpModule,
     FormsModule,
