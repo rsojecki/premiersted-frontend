@@ -33,6 +33,10 @@ export class AuthorizationService {
     return !!this.jwtToken;
   }
 
+  public getUser():User {
+    return this.user;
+  }
+
   private openLoginWindow():void {
     const w:Window = window.open(this.apiEndpoint + '_github', 'Github Login');
     function send():void {

@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import {AuthorizationService} from './services/authorization.service';
 import {Meta} from './user/meta';
 import {User} from './user/user';
+import {UserComponent} from './user/user.component';
 
 @NgModule({
   imports: [
@@ -16,10 +17,11 @@ import {User} from './user/user';
     HttpModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent, pathMatch: 'full'}
+      {path: '', component: HomeComponent, pathMatch: 'full'},
+      {path: 'user/:id', component: UserComponent, pathMatch: 'full'}
     ])
   ],
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, UserComponent],
   exports: [AppComponent],
   providers: [
     ApiService,
