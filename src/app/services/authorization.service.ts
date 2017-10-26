@@ -37,6 +37,10 @@ export class AuthorizationService {
     return this.user;
   }
 
+  public getToken():string {
+    return this.jwtToken;
+  }
+
   private openLoginWindow():void {
     const w:Window = window.open(this.apiEndpoint + '_github', 'Github Login');
     function send():void {

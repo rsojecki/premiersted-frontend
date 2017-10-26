@@ -1,3 +1,18 @@
 <!-- User container -->
-User
-{{user|json}}
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image" [style.background-image]="user.getMeta().getAvatar_url()"></div>
+    <mat-card-title>{{user.getMeta().getName()}} {{user.getMeta().getLogin()}}</mat-card-title>
+    <mat-card-subtitle>{{user.getAccess()}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="http://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      Some data, statistics and other rubbish
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     this.auth.logOff();
   }
 
-  public checkAuth():void {
-    console.log(this.auth.isAuthorized());
+  public checkAuth():boolean {
+    return this.auth.isAuthorized();
   }
 }

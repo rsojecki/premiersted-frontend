@@ -1,14 +1,11 @@
-<nav>
-    <div>
-      <button type="button" (click)="logIn()">Log In</button>
-    </div>
-    <div>
-      <button type="button" (click)="logOff()">Log Off</button>
-    </div>
-    <div>
-      <button type="button" (click)="checkAuth()">Check</button>
-    </div>
-</nav>
+<mat-toolbar color="primary">
+  <img src="https://material.angular.io/assets/img/homepage/angular-white-transparent.svg">
+  <span>Premiersted</span>
+  <span class="example-fill-remaining-space"></span>
+  <button mat-raised-button color="accent" (click)="logIn()" *ngIf="!checkAuth()">Log In</button>
+  <button mat-raised-button color="warn" (click)="logOff()" *ngIf="checkAuth()" routerLink="/">Log Off</button>
+</mat-toolbar>
+
 <div>
   <router-outlet></router-outlet>
 </div>

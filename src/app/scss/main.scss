@@ -1,1 +1,27 @@
 @import "./../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+.example-fill-remaining-space {
+  // This fills the remaining space, by using flexbox.
+  // Every toolbar row uses a flexbox row layout.
+  flex: 1 1 auto;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.example-card {
+  width: 400px;
+}
+
+.example-header-image {
+  //background-image: url('http://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+#game-card-image {
+  width: 285px;
+  height: 320px;
+  background: url('./../img/championschib_logo.svg');
+  background-size:cover;
+}
