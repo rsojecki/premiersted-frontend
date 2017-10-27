@@ -48,6 +48,18 @@ export class ApiService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  public postResult(game:string, contest:string, result:any): Observable<any> {
+    console.log(result);
+    const options:RequestOptions = this.createAuthorizationHeader();
+    options.headers.append('Content-Type', 'text/plain');
+
+    return this.http.post(this.apiEndpoint + 'games/' + game + '/schedule/' + contest + '?force=1' , result, this.createAuthorizationHeader())
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw('Server error'));
+  }
+
   private createAuthorizationHeader(): RequestOptions {
     let headers: Headers = new Headers();
     headers.append('auth-token', this.auth.getToken());

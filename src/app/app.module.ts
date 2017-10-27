@@ -11,7 +11,9 @@ import {Meta} from './user/meta';
 import {User} from './user/user';
 import {UserComponent} from './user/user.component';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatSidenavModule, MatTabsModule,
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatExpansionModule, MatGridListModule, MatIconModule,
+  MatSidenavModule,
+  MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,9 +28,12 @@ import {GamesComponent} from './games/games.component';
     MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,
+    MatExpansionModule,
     CommonModule,
     HttpModule,
+    MatIconModule,
     MatSidenavModule,
+    MatGridListModule,
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},

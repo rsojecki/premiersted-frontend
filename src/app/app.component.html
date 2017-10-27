@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <img src="https://material.angular.io/assets/img/homepage/angular-white-transparent.svg">
+  <mat-icon (click)="sidenav.toggle()" style="font-size: 26px">menu</mat-icon>
   <span>Premiersted</span>
   <span class="example-fill-remaining-space"></span>
   <button mat-raised-button color="accent" (click)="logIn()" *ngIf="!checkAuth()">Log In</button>
@@ -9,7 +9,7 @@
 <div>
 </div>
 <mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened="true">
+  <mat-sidenav #sidenav mode="side" opened="true">
     <div class="menu-item" routerLink="/">Home</div>
     <div class="menu-item" routerLink="/user/github:22493388">User</div>
     <div class="menu-item" routerLink="/games">Games</div>

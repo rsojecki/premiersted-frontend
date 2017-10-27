@@ -1,4 +1,5 @@
 import {UserInterface} from './user';
+import {ResultInterface} from './result';
 export interface ContestInterface {
   comment:string;
   gid:string;
@@ -6,7 +7,7 @@ export interface ContestInterface {
   visitor:UserInterface;
   id:String;
   rematch:String;
-  result:any;
+  result:ResultInterface;
   scheduled:string;
   status:string;
   updated:string;
