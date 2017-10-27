@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AuthorizationService} from './services/authorization.service';
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false
 })
 export class AppComponent implements OnInit {
   constructor(private auth: AuthorizationService) {

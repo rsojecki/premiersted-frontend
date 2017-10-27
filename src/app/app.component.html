@@ -7,5 +7,15 @@
 </mat-toolbar>
 
 <div>
-  <router-outlet></router-outlet>
 </div>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened="true">
+    <div class="menu-item" routerLink="/">Home</div>
+    <div class="menu-item" routerLink="/user/github:22493388">User</div>
+    <div class="menu-item" routerLink="/games">Games</div>
+  </mat-sidenav>
+  <div class="my-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>

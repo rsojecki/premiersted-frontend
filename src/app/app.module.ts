@@ -10,7 +10,10 @@ import {AuthorizationService} from './services/authorization.service';
 import {Meta} from './user/meta';
 import {User} from './user/user';
 import {UserComponent} from './user/user.component';
-import {MatButtonModule, MatCardModule, MatCheckboxModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatSidenavModule, MatTabsModule,
+  MatToolbarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserEditComponent} from './user/edit/user.edit.component';
 import {GamesComponent} from './games/games.component';
@@ -22,8 +25,10 @@ import {GamesComponent} from './games/games.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatTabsModule,
     CommonModule,
     HttpModule,
+    MatSidenavModule,
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
