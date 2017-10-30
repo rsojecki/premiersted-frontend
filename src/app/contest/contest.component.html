@@ -28,7 +28,7 @@
   <br>
   {{contest.status}}
   <div *ngIf="!isPlayed()&&isAuthorized()">
-    <button mat-raised-button color="primary" (click)="postResult(contest.id)">Post result</button>
+    <button mat-raised-button color="primary" (click)="openDialog()">Opublikuj wynik</button>
   </div>
   <div *ngIf="isPlayed()&&isAuthorized()">
     <button mat-raised-button color="primary" (click)="postResult(contest.id)">Edit result</button>

@@ -13,10 +13,10 @@ import {UserComponent} from './user/user.component';
 import {
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule,
-  MatExpansionModule,
+  MatCheckboxModule, MatDialogModule,
+  MatExpansionModule, MatFormField, MatFormFieldModule,
   MatGridListModule,
-  MatIconModule,
+  MatIconModule, MatInputModule,
   MatSidenavModule, MatTableModule,
   MatTabsModule,
   MatToolbarModule
@@ -28,6 +28,7 @@ import {DetailsGamesComponent} from './games/details/details.games.component';
 import {IngressGameComponent} from './games/ingress/ingress.game.component';
 import {UserIngressComponent} from './user/ingress/ingress.user.component';
 import {TableDetailsGamesComponent} from './games/details/table/table.details.games.component';
+import {PostResultDialogContestComponent} from './contest/postResultDialog/postResultDialog.contest.component';
 
 @NgModule({
   imports: [
@@ -44,6 +45,9 @@ import {TableDetailsGamesComponent} from './games/details/table/table.details.ga
     MatSidenavModule,
     MatGridListModule,
     MatTableModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -61,8 +65,10 @@ import {TableDetailsGamesComponent} from './games/details/table/table.details.ga
     ResultContestComponent,
     DetailsGamesComponent,
     UserIngressComponent,
-    TableDetailsGamesComponent
+    TableDetailsGamesComponent,
+    PostResultDialogContestComponent
   ],
+  bootstrap: [TableDetailsGamesComponent, PostResultDialogContestComponent],
   exports: [AppComponent],
   providers: [
     ApiService,

@@ -23,7 +23,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div *ngFor="let i of objectKeys(game.schedule)">
-      <contest [contest]="game.schedule[i]"></contest>
+      <contest [contest]="game.schedule[i]" [gameId]="game.id"></contest>
     </div>
   </mat-expansion-panel>
   <mat-expansion-panel>

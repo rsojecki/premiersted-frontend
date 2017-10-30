@@ -6,8 +6,8 @@ export interface ContestInterface {
   gid: string;
   home: LinkInterface;
   visitor: LinkInterface;
-  id: String;
-  rematch: String;
+  id: string;
+  rematch: string;
   result: ResultInterface;
   scheduled: string;
   status: string;
