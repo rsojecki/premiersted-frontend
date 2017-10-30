@@ -1,0 +1,58 @@
+<!-- Table Details Games Component-->
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> Lp.</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Imię</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{getLinkById(element.id).user.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="played">
+      <mat-header-cell *matHeaderCellDef> RM</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.played}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="wins">
+      <mat-header-cell *matHeaderCellDef> W</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.wins}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="loses">
+      <mat-header-cell *matHeaderCellDef> P</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.loses}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="draws">
+      <mat-header-cell *matHeaderCellDef> R</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.draws}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="scored">
+      <mat-header-cell *matHeaderCellDef> BZ</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.scored}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lost">
+      <mat-header-cell *matHeaderCellDef> BS</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lost}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="balance">
+      <mat-header-cell *matHeaderCellDef> RB</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.balance}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="points">
+      <mat-header-cell *matHeaderCellDef> Pkt</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.points}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
