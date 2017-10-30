@@ -9,20 +9,34 @@ import {GameInterface} from '../interfaces/game';
   selector: 'demo-app',
   templateUrl: 'user.component.html'
 })
+
 export class UserComponent {
 
   public contests: ContestInterface[];
   public games: GameInterface[];
-  public objectKeys:any = Object.keys;
+  public objectKeys: any = Object.keys;
 
   constructor(private route: ActivatedRoute, private api: ApiService, public user: User) {
     this.route.params.subscribe(params => {
       const userId: string = params['id'];
       api.getUser(userId).subscribe(response => {
         this.user.createFrom(response);
-        this.contests = response.contests;
+        this.contests = this.fixUserObjectInconsistency(response.contests);
         this.games = response.games;
       });
     });
+  }
+
+  private fixUserObjectInconsistency(rawContests: any[]): ContestInterface[] {
+    const contests:any[] = rawContests.slice();
+    contests.forEach((value) => {
+      value.home = {
+        user: value.home
+      };
+      value.visitor = {
+        user: value.visitor
+      };
+    });
+    return contests;
   }
 }

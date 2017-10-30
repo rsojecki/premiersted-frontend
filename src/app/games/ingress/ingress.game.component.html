@@ -1,6 +1,6 @@
-<!-- Game list element container -->
+<!-- Game ingress container -->
 <mat-card>
-  <mat-card-header>
+  <mat-card-header routerLink="/games/{{game.id}}">
     <mat-card-title>{{game.name}}</mat-card-title>
     <mat-card-subtitle>{{game.location}}</mat-card-subtitle>
   </mat-card-header>

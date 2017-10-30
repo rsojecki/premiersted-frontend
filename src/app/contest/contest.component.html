@@ -1,11 +1,7 @@
 <div id="game-{{contest.id}}">
   <mat-grid-list cols="5" rowHeight="100px">
-    <mat-grid-tile [colspan]="2" routerLink="/user/{{contest.home.id}}">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"
-             [style.background-image]="sanitazeUrl(contest.home.avatar_url)"></div>
-        <mat-card-title>{{contest.home.name}}</mat-card-title>
-      </mat-card-header>
+    <mat-grid-tile [colspan]="2">
+      <user-ingress [user]="contest.home.user" [club]="contest.home.club"></user-ingress>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1">
       <div *ngIf="isPlayed()">
@@ -16,12 +12,8 @@
         {{contest.result.visitor}}
       </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" routerLink="/user/{{contest.visitor.id}}">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"
-             [style.background-image]="sanitazeUrl(contest.visitor.avatar_url)"></div>
-        <mat-card-title>{{contest.visitor.name}}</mat-card-title>
-      </mat-card-header>
+    <mat-grid-tile [colspan]="2">
+      <user-ingress [user]="contest.visitor.user" [club]="contest.visitor.club"></user-ingress>
     </mat-grid-tile>
   </mat-grid-list>
   Comments: {{contest.comment}}
@@ -36,7 +28,7 @@
   <br>
   {{contest.status}}
   <div *ngIf="!isPlayed()&&isAuthorized()">
-    <button mat-raised-button color="primary" (click)="postResult(contest.id)">Post result</button>
+    <button mat-raised-button color="primary" (click)="openDialog()">Opublikuj wynik</button>
   </div>
   <div *ngIf="isPlayed()&&isAuthorized()">
     <button mat-raised-button color="primary" (click)="postResult(contest.id)">Edit result</button>

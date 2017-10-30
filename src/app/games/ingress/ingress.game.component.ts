@@ -2,10 +2,10 @@ import {Component, Input} from '@angular/core';
 import {GameInterface} from '../../interfaces/game';
 
 @Component({
-  selector: 'game',
-  templateUrl: 'games.listElement.component.html'
+  selector: 'game-ingress',
+  templateUrl: 'ingress.game.component.html'
 })
-export class GamesListElementComponent {
+export class IngressGameComponent {
   @Input() public game: GameInterface;
   constructor() {
     console.log(this.game);
