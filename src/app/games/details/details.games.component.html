@@ -1,0 +1,37 @@
+<!-- Details game container -->
+<div *ngIf="game">
+  {{game.name}}
+  <br>
+  {{game.created}}
+  Competitors
+  <div *ngFor="let i of objectKeys(game.competitors)">
+    {{game.competitors[i].club.name}}
+    {{game.competitors[i].user.name}}
+  </div>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Competitors
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    {{game.competitors|json}}
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Schedule
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div *ngFor="let i of objectKeys(game.schedule)">
+      <contest [contest]="game.schedule[i]"></contest>
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Table
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    {{game.table|json}}
+  </mat-expansion-panel>
+</div>

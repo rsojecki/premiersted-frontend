@@ -7,12 +7,11 @@ export class AuthorizationService {
 
   private apiEndpoint: string = 'https://api.premiersted.schibsted.ga/';
   private jwtToken: string;
-  private user:User;
 
-  constructor(private UserData:User) {
+  constructor(private ActiveUser:User) {
     if (this.getTokenFromLocalStorage()) {
       this.jwtToken = this.getTokenFromLocalStorage();
-      this.user = this.UserData.createFrom(this.decodeJwtToken());
+      this.ActiveUser.createFrom(this.decodeJwtToken());
     }
   }
 
@@ -33,8 +32,12 @@ export class AuthorizationService {
     return !!this.jwtToken;
   }
 
+  public getId():string {
+    return this.ActiveUser.getId();
+  }
+
   public getUser():User {
-    return this.user;
+    return this.ActiveUser;
   }
 
   public getToken():string {
@@ -57,6 +60,7 @@ export class AuthorizationService {
     if (token) {
       const base64Url:string = token.split('.')[1];
       const base64:string = base64Url.replace('-', '+').replace('_', '/');
+      console.log(JSON.parse(window.atob(base64)));
       return JSON.parse(window.atob(base64));
     }
     return {};
@@ -68,7 +72,7 @@ export class AuthorizationService {
 
   private setUserData(token:string): void {
     this.jwtToken = token;
-    this.user = this.UserData.createFrom(this.decodeJwtToken());
+    this.ActiveUser.createFrom(this.decodeJwtToken());
     localStorage.setItem('premiersted', token);
   }
 

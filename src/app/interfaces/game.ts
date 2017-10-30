@@ -1,8 +1,11 @@
 export interface GameInterface {
-  created:string;
-  id:string;
-  location:string;
-  name:string;
-  status:string;
-  rules:string[];
+  competitors: any;
+  created: string;
+  id: string;
+  location: string;
+  name: string;
+  schedule: any;
+  status: string;
+  rules: string[];
+  table: any;
 }
