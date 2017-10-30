@@ -17,15 +17,17 @@ import {
   MatExpansionModule,
   MatGridListModule,
   MatIconModule,
-  MatSidenavModule,
+  MatSidenavModule, MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {GamesComponent} from './games/games.component';
-import {GamesListElementComponent} from './games/listElement/games.listElement.component';
 import {ResultContestComponent} from './contest/contest.component';
 import {DetailsGamesComponent} from './games/details/details.games.component';
+import {IngressGameComponent} from './games/ingress/ingress.game.component';
+import {UserIngressComponent} from './user/ingress/ingress.user.component';
+import {TableDetailsGamesComponent} from './games/details/table/table.details.games.component';
 
 @NgModule({
   imports: [
@@ -41,6 +43,7 @@ import {DetailsGamesComponent} from './games/details/details.games.component';
     MatIconModule,
     MatSidenavModule,
     MatGridListModule,
+    MatTableModule,
     FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -54,9 +57,12 @@ import {DetailsGamesComponent} from './games/details/details.games.component';
     HomeComponent,
     UserComponent,
     GamesComponent,
-    GamesListElementComponent,
+    IngressGameComponent,
     ResultContestComponent,
-    DetailsGamesComponent],
+    DetailsGamesComponent,
+    UserIngressComponent,
+    TableDetailsGamesComponent
+  ],
   exports: [AppComponent],
   providers: [
     ApiService,
