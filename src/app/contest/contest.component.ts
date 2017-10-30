@@ -23,7 +23,7 @@ export class ResultContestComponent {
     return this.contest.status === 'PLAYED';
   }
   public isAuthorized():boolean {
-    return (this.auth.getId() === this.contest.home.id) || (this.auth.getId() === this.contest.visitor.id);
+    return (this.auth.getId() === this.contest.home.user.id) || (this.auth.getId() === this.contest.visitor.user.id);
   }
   public postResult(contestId:string):void {
     if (this.gameId) {
