@@ -1,0 +1,45 @@
+<div id="game-{{contest.id}}">
+  <mat-grid-list cols="5" rowHeight="100px">
+    <mat-grid-tile [colspan]="2" routerLink="/user/{{contest.home.id}}">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"
+             [style.background-image]="sanitazeUrl(contest.home.avatar_url)"></div>
+        <mat-card-title>{{contest.home.name}}</mat-card-title>
+      </mat-card-header>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">
+      <div *ngIf="isPlayed()">
+        {{contest.result.home}}
+      </div>
+      :
+      <div *ngIf="isPlayed()">
+        {{contest.result.visitor}}
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" routerLink="/user/{{contest.visitor.id}}">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"
+             [style.background-image]="sanitazeUrl(contest.visitor.avatar_url)"></div>
+        <mat-card-title>{{contest.visitor.name}}</mat-card-title>
+      </mat-card-header>
+    </mat-grid-tile>
+  </mat-grid-list>
+  Comments: {{contest.comment}}
+  <br>
+  {{contest.id}}
+  <br>
+  <a (click)="goTo('game-' + contest.rematch)">Jump to rematch</a>
+  <br>
+  Scheduled: {{contest.scheduled}}
+  <br>
+  Updated: {{contest.updated}}
+  <br>
+  {{contest.status}}
+  <div *ngIf="!isPlayed()&&isAuthorized()">
+    <button mat-raised-button color="primary" (click)="postResult(contest.id)">Post result</button>
+  </div>
+  <div *ngIf="isPlayed()&&isAuthorized()">
+    <button mat-raised-button color="primary" (click)="postResult(contest.id)">Edit result</button>
+  </div>
+</div>
+{{contest|json}}

@@ -1,17 +1,4 @@
 <!-- Games container -->
-<mat-card *ngFor="let game of games">
-  <mat-card-header>
-    <mat-card-title>{{game.name}}</mat-card-title>
-    <mat-card-subtitle>{{game.location}}</mat-card-subtitle>
-  </mat-card-header>
-  <div id="game-card-image"></div>
-  <mat-card-content>
-    <span *ngIf="game.rules">Rules:</span>
-    <ul>
-      <li *ngFor="let rule of game.rules">{{rule}}</li>
-    </ul>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button color="warn">JOIN</button>
-  </mat-card-actions>
-</mat-card>
+<div *ngFor="let game of games">
+  <game [game]="game" routerLink="/games/{{game.id}}"></game>
+</div>

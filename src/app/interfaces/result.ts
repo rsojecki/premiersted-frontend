@@ -1,4 +1,4 @@
 export interface ResultInterface {
-  visitor: number,
-  home: number
+  visitor: number;
+  home: number;
 }
