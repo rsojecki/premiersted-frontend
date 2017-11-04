@@ -12,6 +12,6 @@
     </ul>
   </mat-card-content>
   <mat-card-actions>
-    <button *ngIf="isOpen()" mat-button color="warn">JOIN</button>
+    <button *ngIf="isOpen()" mat-button color="warn" (click)="openDialog()">JOIN</button>
   </mat-card-actions>
 </mat-card>

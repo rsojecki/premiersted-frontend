@@ -1,35 +1,41 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {HttpModule} from '@angular/http';
-import {RouterModule} from '@angular/router';
-import {AppComponent} from './app.component';
-import {HomeComponent} from './home/home.component';
-import {ApiService} from './services/api.service';
-import {FormsModule} from '@angular/forms';
-import {AuthorizationService} from './services/authorization.service';
-import {Meta} from './user/meta';
-import {User} from './user/user';
-import {UserComponent} from './user/user.component';
 import {
+  MatAutocomplete, MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule, MatDialogModule,
-  MatExpansionModule, MatFormField, MatFormFieldModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatFormFieldModule,
   MatGridListModule,
-  MatIconModule, MatInputModule,
-  MatSidenavModule, MatTableModule,
+  MatIconModule,
+  MatInputModule,
+  MatSidenavModule,
+  MatSliderModule, MatSlideToggleModule,
+  MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CommonModule} from '@angular/common';
+import {HttpModule} from '@angular/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {UserComponent} from './user/user.component';
 import {GamesComponent} from './games/games.component';
-import {ResultContestComponent} from './contest/contest.component';
 import {DetailsGamesComponent} from './games/details/details.games.component';
+import {AppComponent} from './app.component';
 import {IngressGameComponent} from './games/ingress/ingress.game.component';
+import {ResultContestComponent} from './contest/contest.component';
 import {UserIngressComponent} from './user/ingress/ingress.user.component';
 import {TableDetailsGamesComponent} from './games/details/table/table.details.games.component';
 import {PostResultDialogContestComponent} from './contest/postResultDialog/postResultDialog.contest.component';
-
+import {ApiService} from './services/api.service';
+import {AuthorizationService} from './services/authorization.service';
+import {User} from './user/user';
+import {Meta} from './user/meta';
+import {JoinGameDialogGamesComponent} from './games/joinDialog/joinDialog.games.component';
 @NgModule({
   imports: [
     MatToolbarModule,
@@ -48,7 +54,11 @@ import {PostResultDialogContestComponent} from './contest/postResultDialog/postR
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSliderModule,
+    MatAutocompleteModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
       {path: 'user/:id', component: UserComponent, pathMatch: 'full'},
@@ -66,9 +76,10 @@ import {PostResultDialogContestComponent} from './contest/postResultDialog/postR
     DetailsGamesComponent,
     UserIngressComponent,
     TableDetailsGamesComponent,
-    PostResultDialogContestComponent
+    PostResultDialogContestComponent,
+    JoinGameDialogGamesComponent
   ],
-  bootstrap: [TableDetailsGamesComponent, PostResultDialogContestComponent],
+  bootstrap: [AppComponent, PostResultDialogContestComponent, JoinGameDialogGamesComponent],
   exports: [AppComponent],
   providers: [
     ApiService,
