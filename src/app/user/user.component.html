@@ -5,12 +5,18 @@
     <mat-card-title>{{user.getMeta().getName()}} {{user.getMeta().getLogin()}}</mat-card-title>
     <mat-card-subtitle>{{user.getAccess()}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-tab-group *ngIf="games">
-    <mat-tab *ngFor="let i of objectKeys(games)" label="{{games[i].name}}">
-      <h1>Results:</h1>
-      <div *ngFor="let contest of contests">
-        <contest *ngIf="contest.gid===games[i].id" [contest]="contest" [gameId]="games[i].id"></contest>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Wyniki
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-tab-group *ngIf="games">
+      <mat-tab *ngFor="let i of objectKeys(games)" label="{{games[i].name}}">
+        <div *ngFor="let contest of contests">
+          <contest *ngIf="contest.gid===games[i].id" [contest]="contest" [gameId]="games[i].id"></contest>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-expansion-panel>
 </mat-card>
