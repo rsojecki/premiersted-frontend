@@ -12,9 +12,8 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && apt-get install -y
 COPY ./docker/nginx.conf /etc/nginx/nginx.conf
 
 ### Building project
-RUN mkdir -p /var/www/premiersted
-COPY . /var/www/premiersted
 WORKDIR /var/www/premiersted
+COPY . /var/www/premiersted
 RUN npm install
 RUN npm run build-prod
 
