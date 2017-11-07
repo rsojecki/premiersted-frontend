@@ -1,7 +1,7 @@
 <!-- User ingress container -->
-<mat-card-header routerLink="/user/{{user.id}}">
-  <div mat-card-avatar class="example-header-image"
+<div routerLink="/user/{{user.id}}">
+  <div class="avatar-image"
        [style.background-image]="sanitazeUrl(user.avatar_url)"></div>
-  <mat-card-title>{{user.name}}</mat-card-title>
-  <mat-card-subtitle *ngIf="club">{{club.name}}</mat-card-subtitle>
-</mat-card-header>
+  <span>{{user.name}}</span>
+  <span *ngIf="club">{{club.name}}</span>
+</div>

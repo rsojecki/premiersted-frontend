@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectorRef, Component, Input} from '@angular/core';
 import {ContestInterface} from '../interfaces/contest';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {AuthorizationService} from '../services/authorization.service';
@@ -17,7 +17,7 @@ export class ResultContestComponent {
   @Input() public contest: ContestInterface;
   @Input() public gameId: string;
 
-  constructor(private sanitizer: DomSanitizer, private dialog: MatDialog, private auth: AuthorizationService, private api: ApiService) {
+  constructor(private sanitizer: DomSanitizer, private dialog: MatDialog, private auth: AuthorizationService, private api: ApiService, private changeDetector: ChangeDetectorRef) {
   }
 
   public sanitazeUrl(url: string): SafeStyle {
@@ -59,9 +59,10 @@ export class ResultContestComponent {
     delete data['visitorName'];
     data.status = 'PLAYED';
     this.api.postResult(this.gameId, this.contest.id, data).subscribe(response => {
-      window.location.reload();
+      //window.location.reload();
       // TODO Do poprawy, dane nie odświerzają się w <user-ingress>
-      // this.contest.result = data.result;
+      this.contest.result = data.result;
+      this.changeDetector.detectChanges();
       console.log(response);
     });
   }

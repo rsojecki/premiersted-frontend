@@ -12,6 +12,7 @@ export class GamesComponent {
 
   constructor(api:ApiService) {
     api.getGames(null).subscribe( response => {
+      console.log(response);
       this.games = response;
     });
   }

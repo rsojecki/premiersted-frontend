@@ -4,6 +4,7 @@ import {Http, Response} from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/catch';
 import {AuthorizationService} from './authorization.service';
+import {addGameInterface, addPlayerInterface} from '../interfaces/game';
 
 @Injectable()
 export class ApiService {
@@ -48,12 +49,42 @@ export class ApiService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  public postResult(game:string, contest:string, result:any): Observable<any> {
-    console.log(result);
-    const options:RequestOptions = this.createAuthorizationHeader();
-    options.headers.append('Content-Type', 'text/plain');
+  public addGame(data:addGameInterface): Observable<any> {
+    return this.http.post(this.apiEndpoint + 'games' , data, this.createAuthorizationHeader())
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw('Server error'));
+  }
 
+  public postResult(game:string, contest:string, result:any): Observable<any> {
     return this.http.post(this.apiEndpoint + 'games/' + game + '/schedule/' + contest + '?force=1' , result, this.createAuthorizationHeader())
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw('Server error'));
+  }
+
+  public fuzzySearchClubs(query:string): Observable<any> {
+    return this.http.get(this.apiEndpoint + 'clubs?search=' + query, this.createAuthorizationHeader())
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw('Server error'));
+  }
+
+  public addPlayerToGame(game:string, data:addPlayerInterface): Observable<any> {
+    return this.http.post(this.apiEndpoint + 'games/' + game + '/competitors', data, this.createAuthorizationHeader())
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: any) => Observable.throw('Server error'));
+  }
+
+  public removePlayerFromGame(game:string, userId:string): Observable<any> {
+    const test:RequestOptions =this.createAuthorizationHeader();
+    test.body =  {uid:userId};
+    return this.http.delete(this.apiEndpoint + 'games/' + game + '/competitors', test)
       .map((res: Response) => {
         return res.json();
       })

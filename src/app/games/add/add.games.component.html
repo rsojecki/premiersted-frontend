@@ -1,0 +1,14 @@
+<!-- Add games component -->
+Stwórz nową ligę:
+<form class="example-form">
+  <mat-form-field>
+    <input matInput placeholder="Nazwa">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Miasto">
+      <mat-option *ngFor="let place of places" [value]="place">
+        {{ place }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>s
+</form>

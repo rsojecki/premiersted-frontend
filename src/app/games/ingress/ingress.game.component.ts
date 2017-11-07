@@ -7,10 +7,4 @@ import {GameInterface} from '../../interfaces/game';
 })
 export class IngressGameComponent {
   @Input() public game: GameInterface;
-  constructor() {
-    console.log(this.game);
-  }
-  public isOpen():boolean {
-    return this.game.status === 'OPEN';
-  }
 }

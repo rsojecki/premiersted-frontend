@@ -3,11 +3,14 @@
   {{game.name}}
   <br>
   {{game.created}}
-  Competitors
+  Gracze:
   <div *ngFor="let i of objectKeys(game.competitors)">
     {{game.competitors[i].club.name}}
     {{game.competitors[i].user.name}}
   </div>
+  <button *ngIf="!isSigned()&&isOpen()" mat-button color="warn" (click)="openDialog()">Dołącz</button>
+  <button *ngIf="isSigned()&&isOpen()" mat-button color="warn" (click)="openDialog()">Zmień zespół</button>
+  <button *ngIf="isSigned()&&isOpen()" mat-button color="warn" (click)="removePlayerFromGame()">Wypisz się</button>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -16,7 +19,7 @@
     </mat-expansion-panel-header>
     {{game.competitors|json}}
   </mat-expansion-panel>
-  <mat-expansion-panel>
+  <mat-expansion-panel *ngIf="!isOpen()">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Schedule
@@ -26,7 +29,7 @@
       <contest [contest]="game.schedule[i]" [gameId]="game.id"></contest>
     </div>
   </mat-expansion-panel>
-  <mat-expansion-panel>
+  <mat-expansion-panel *ngIf="!isOpen()">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Tabela wynków

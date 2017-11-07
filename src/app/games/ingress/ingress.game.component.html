@@ -1,17 +1,14 @@
 <!-- Game ingress container -->
-<mat-card>
-  <mat-card-header routerLink="/games/{{game.id}}">
+<mat-card routerLink="/games/{{game.id}}">
+  <mat-card-header>
     <mat-card-title>{{game.name}}</mat-card-title>
     <mat-card-subtitle>{{game.location}}</mat-card-subtitle>
   </mat-card-header>
-  <div id="game-card-image"></div>
+  <!--div id="game-card-image"></div-->
   <mat-card-content>
     <span *ngIf="game.rules">Rules:</span>
     <ul>
       <li *ngFor="let rule of game.rules">{{rule}}</li>
     </ul>
   </mat-card-content>
-  <mat-card-actions>
-    <button *ngIf="isOpen()" mat-button color="warn">JOIN</button>
-  </mat-card-actions>
 </mat-card>

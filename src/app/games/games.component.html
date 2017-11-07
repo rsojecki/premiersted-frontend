@@ -1,4 +1,5 @@
 <!-- Games container -->
+<button *ngIf="true" mat-button color="warn" routerLink="/games/add">Stwórz</button>
 <div *ngFor="let game of games">
   <game-ingress [game]="game"></game-ingress>
 </div>

@@ -9,3 +9,12 @@ export interface GameInterface {
   rules: string[];
   table: any;
 }
+export interface addPlayerInterface {
+  uid: string;
+  club: string;
+}
+
+export interface addGameInterface {
+  name: string;
+  location: string;
+}
