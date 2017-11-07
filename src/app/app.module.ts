@@ -9,7 +9,7 @@ import {
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatSelectModule,
   MatSidenavModule,
   MatSliderModule, MatSlideToggleModule,
   MatTableModule,
@@ -36,6 +36,8 @@ import {AuthorizationService} from './services/authorization.service';
 import {User} from './user/user';
 import {Meta} from './user/meta';
 import {JoinGameDialogGamesComponent} from './games/joinDialog/joinDialog.games.component';
+import {UsersComponent} from './users/users.component';
+import {AddGamesComponent} from './games/add/add.games.component';
 @NgModule({
   imports: [
     MatToolbarModule,
@@ -49,6 +51,7 @@ import {JoinGameDialogGamesComponent} from './games/joinDialog/joinDialog.games.
     HttpModule,
     MatIconModule,
     MatSidenavModule,
+    MatSelectModule,
     MatGridListModule,
     MatTableModule,
     MatDialogModule,
@@ -62,7 +65,9 @@ import {JoinGameDialogGamesComponent} from './games/joinDialog/joinDialog.games.
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
       {path: 'user/:id', component: UserComponent, pathMatch: 'full'},
+      {path: 'users', component: UsersComponent, pathMatch: 'full'},
       {path: 'games', component: GamesComponent, pathMatch: 'full'},
+      {path: 'games/add', component: AddGamesComponent, pathMatch: 'full'},
       {path: 'games/:id', component: DetailsGamesComponent, pathMatch: 'full'}
     ])
   ],
@@ -70,6 +75,7 @@ import {JoinGameDialogGamesComponent} from './games/joinDialog/joinDialog.games.
     AppComponent,
     HomeComponent,
     UserComponent,
+    UsersComponent,
     GamesComponent,
     IngressGameComponent,
     ResultContestComponent,
@@ -77,7 +83,8 @@ import {JoinGameDialogGamesComponent} from './games/joinDialog/joinDialog.games.
     UserIngressComponent,
     TableDetailsGamesComponent,
     PostResultDialogContestComponent,
-    JoinGameDialogGamesComponent
+    JoinGameDialogGamesComponent,
+    AddGamesComponent
   ],
   bootstrap: [AppComponent, PostResultDialogContestComponent, JoinGameDialogGamesComponent],
   exports: [AppComponent],

@@ -13,3 +13,8 @@ export interface addPlayerInterface {
   uid: string;
   club: string;
 }
+
+export interface addGameInterface {
+  name: string;
+  location: string;
+}
