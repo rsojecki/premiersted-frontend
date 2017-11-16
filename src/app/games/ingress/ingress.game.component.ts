@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {GameInterface} from '../../interfaces/game';
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'game-ingress',

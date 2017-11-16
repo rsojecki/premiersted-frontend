@@ -1,3 +1,4 @@
+import {UserGithubInterface} from './user';
 export interface GameInterface {
   competitors: any;
   created: string;
@@ -17,4 +18,5 @@ export interface addPlayerInterface {
 export interface addGameInterface {
   name: string;
   location: string;
+  players?: UserGithubInterface[];
 }

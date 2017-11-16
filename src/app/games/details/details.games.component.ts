@@ -17,12 +17,7 @@ export class DetailsGamesComponent {
   public objectKeys: any = Object.keys;
 
   constructor(private api: ApiService, private route: ActivatedRoute, private dialog: MatDialog, private auth: AuthorizationService) {
-    this.route.params.subscribe(params => {
-      const gameId: string = params['id'];
-      api.getGame(gameId).subscribe(response => {
-        this.generateData(response);
-      });
-    });
+    this.getGame();
   }
   public isOpen(): boolean {
     return this.game.status === 'OPEN';
@@ -54,12 +49,22 @@ export class DetailsGamesComponent {
           club: result.id
         };
         this.api.addPlayerToGame(this.game.id, send).subscribe(response => {
-          this.generateData(response);
+          this.getGame();
           console.log(response);
         })
       }
     });
   }
+  private getGame():void{
+    this.route.params.subscribe(params => {
+      const gameId: string = params['id'];
+      this.api.getGame(gameId).subscribe(response => {
+        this.generateData(response);
+      });
+    });
+
+  }
+
   private generateData(response):void {
     this.game = response;
     for (let i of this.objectKeys(this.game.schedule)) {
