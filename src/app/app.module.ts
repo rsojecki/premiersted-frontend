@@ -37,7 +37,7 @@ import {User} from './user/user';
 import {Meta} from './user/meta';
 import {JoinGameDialogGamesComponent} from './games/joinDialog/joinDialog.games.component';
 import {UsersComponent} from './users/users.component';
-import {AddGamesComponent} from './games/add/add.games.component';
+import {AddGameComponent} from './games/add/add.game.component';
 @NgModule({
   imports: [
     MatToolbarModule,
@@ -67,7 +67,6 @@ import {AddGamesComponent} from './games/add/add.games.component';
       {path: 'user/:id', component: UserComponent, pathMatch: 'full'},
       {path: 'users', component: UsersComponent, pathMatch: 'full'},
       {path: 'games', component: GamesComponent, pathMatch: 'full'},
-      {path: 'games/add', component: AddGamesComponent, pathMatch: 'full'},
       {path: 'games/:id', component: DetailsGamesComponent, pathMatch: 'full'}
     ])
   ],
@@ -84,9 +83,9 @@ import {AddGamesComponent} from './games/add/add.games.component';
     TableDetailsGamesComponent,
     PostResultDialogContestComponent,
     JoinGameDialogGamesComponent,
-    AddGamesComponent
+    AddGameComponent
   ],
-  bootstrap: [AppComponent, PostResultDialogContestComponent, JoinGameDialogGamesComponent],
+  bootstrap: [AppComponent, PostResultDialogContestComponent, JoinGameDialogGamesComponent, AddGameComponent],
   exports: [AppComponent],
   providers: [
     ApiService,

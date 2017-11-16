@@ -24,6 +24,10 @@ export class AuthorizationService {
     });
   }
 
+  public isAdmin():boolean {
+    return this.ActiveUser.getAccess() === 'ADMIN';
+  }
+
   public logOff():void {
     this.removeUserData();
   }
