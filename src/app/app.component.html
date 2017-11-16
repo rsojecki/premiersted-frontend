@@ -7,7 +7,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" opened="false" (click)="sidenav.toggle()">
+  <mat-sidenav #sidenav mode="over" opened="false" (click)="sidenav.toggle()">
     <div class="menu-item" routerLink="/">Home</div>
     <div class="menu-item" routerLink="/users">Users</div>
     <div class="menu-item" routerLink="/user/{{getId()}}">MyAccount</div>
