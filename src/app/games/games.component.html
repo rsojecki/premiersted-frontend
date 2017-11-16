@@ -2,6 +2,6 @@
 <button *ngIf="isAdmin()" mat-button color="warn" (click)="openDialog()">Stwórz</button>
 <div *ngFor="let game of games">
   <game-ingress [game]="game"></game-ingress>
-  <button *ngIf="isAdmin()" mat-button color="warn" (click)="makeSchedule(game.id)">Generuj drabinkę</button>
+  <button *ngIf="showMakeSchedule(game)" mat-button color="warn" (click)="makeSchedule(game.id)">Generuj drabinkę</button>
   <button *ngIf="isAdmin()" mat-button color="warn" (click)="delete(game.id)">Usuń ligę</button>
 </div>
