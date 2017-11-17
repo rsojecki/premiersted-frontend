@@ -79,3 +79,21 @@ html, body, material-app, mat-sidenav-container, .my-content {
   height: 64px;
   background-size:cover;
 }
+.users-list-element {
+  clear:both;
+  height: 80px;
+}
+
+.users-list-element-avatar {
+  float:left;
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.users-list-element-details {
+  font-size: 12px;
+  margin-top: -16px;
+}

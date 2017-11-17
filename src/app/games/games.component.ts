@@ -21,6 +21,10 @@ export class GamesComponent {
     });
   }
 
+  public showMakeSchedule(game:GameInterface):boolean {
+    return game.status==='OPEN' && this.isAdmin();
+  }
+
   public isAdmin():boolean {
     return this.auth.isAdmin();
   }
