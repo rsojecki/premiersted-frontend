@@ -18,6 +18,7 @@ export class DetailsGamesComponent {
 
   constructor(private api: ApiService, private route: ActivatedRoute, private dialog: MatDialog, private auth: AuthorizationService) {
     this.getGame();
+    console.log(this.game);
   }
   public isOpen(): boolean {
     return this.game.status === 'OPEN';
