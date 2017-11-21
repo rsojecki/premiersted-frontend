@@ -1,7 +1,24 @@
 <!-- Games container -->
-<button *ngIf="isAdmin()" mat-button color="warn" (click)="openDialog()">Stwórz</button>
-<div *ngFor="let game of games">
-  <game-ingress [game]="game"></game-ingress>
-  <button *ngIf="showMakeSchedule(game)" mat-button color="warn" (click)="makeSchedule(game.id)">Generuj drabinkę</button>
-  <button *ngIf="isAdmin()" mat-button color="warn" (click)="delete(game.id)">Usuń ligę</button>
+<div class="wide-button">
+  <button *ngIf="isAdmin()" mat-button color="warn" (click)="openDialog()">Stwórz</button>
 </div>
+<div class="container mat-elevation-z2">
+  <div class="container-header">
+    Ligi
+  </div>
+  <div *ngFor="let game of games">
+    <mat-card routerLink="/games/{{game.id}}" style="margin-bottom: 16px">
+      <mat-card-header>
+        <mat-card-title>{{game.name}}</mat-card-title>
+        <mat-card-subtitle>{{game.location}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <button *ngIf="showMakeSchedule(game)" mat-button color="warn" (click)="makeSchedule(game.id)">Generuj
+          drabinkę
+        </button>
+        <button *ngIf="isAdmin()" mat-button color="warn" (click)="delete(game.id)">Usuń ligę</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+

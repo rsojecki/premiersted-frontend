@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {
-  MatAutocomplete, MatAutocompleteModule,
+  MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
@@ -9,9 +9,11 @@ import {
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
-  MatInputModule, MatSelectModule,
+  MatInputModule,
+  MatSelectModule,
   MatSidenavModule,
-  MatSliderModule, MatSlideToggleModule,
+  MatSliderModule,
+  MatSlideToggleModule,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule
@@ -26,7 +28,6 @@ import {UserComponent} from './user/user.component';
 import {GamesComponent} from './games/games.component';
 import {DetailsGamesComponent} from './games/details/details.games.component';
 import {AppComponent} from './app.component';
-import {IngressGameComponent} from './games/ingress/ingress.game.component';
 import {ResultContestComponent} from './contest/contest.component';
 import {UserIngressComponent} from './user/ingress/ingress.user.component';
 import {TableDetailsGamesComponent} from './games/details/table/table.details.games.component';
@@ -76,7 +77,6 @@ import {AddGameComponent} from './games/add/add.game.component';
     UserComponent,
     UsersComponent,
     GamesComponent,
-    IngressGameComponent,
     ResultContestComponent,
     DetailsGamesComponent,
     UserIngressComponent,

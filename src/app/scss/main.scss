@@ -93,3 +93,50 @@ html, body, material-app, mat-sidenav-container, .my-content {
   font-size: 12px;
   margin-top: -16px;
 }
+
+.container {
+  margin: 16px;
+  background-color: white;
+  padding: 0 16px 16px 16px;
+}
+
+.hero-container {
+  @extend .container
+}
+
+.container-header {
+  height: 42px;
+  margin: 0 -16px 16px -16px;
+  background-color: #3f51b5;
+  line-height: 42px;
+  text-align: center;
+  color: rgba(255, 255, 255, .87);
+  font-weight: bold;
+}
+
+.hero-container-header {
+  @extend .container-header;
+  height: 84px;
+  line-height: 84px;
+  font-size: 2em;
+}
+
+.score-table {
+  margin: 8px;
+}
+
+.wide-button-container {
+  margin: 16px
+}
+.wide-button {
+  margin: 16px;
+}
+
+.wide-button > button {
+  height: 42px;
+  background-color: #3f51b5;
+  line-height: 42px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+}

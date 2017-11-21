@@ -1,9 +1,14 @@
 <!-- Users container -->
-<div class="users-list-element" *ngFor="let user of users" routerLink="/user/{{user.id}}">
-  <img class="users-list-element-avatar" src="{{user.meta.avatar_url}}">
-  <h3> {{user.meta.name}} </h3>
-  <p class="users-list-element-details">
-    {{user.meta.login}}
-    <span *ngIf="user.access === 'ADMIN'"><br>{{user.access}}</span>
-  </p>
+<div class="container mat-elevation-z2">
+  <div class="container-header">
+    Użytkownicy
+  </div>
+  <div class="users-list-element" *ngFor="let user of users" routerLink="/user/{{user.id}}">
+    <img class="users-list-element-avatar" src="{{user.meta.avatar_url}}">
+    <h3> {{user.meta.name}} </h3>
+    <p class="users-list-element-details">
+      {{user.meta.login}}
+      <span *ngIf="user.access === 'ADMIN'"><br>{{user.access}}</span>
+    </p>
+  </div>
 </div>

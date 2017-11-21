@@ -1,26 +1,37 @@
 <!-- Details game container -->
 <div *ngIf="game">
-  {{game.name}}
-  <br>
-  {{game.created}}
-  Gracze:
-  <div *ngFor="let i of objectKeys(game.competitors)">
-    {{game.competitors[i].club.name}}
-    {{game.competitors[i].user.name}}
+  <div class="hero-container mat-elevation-z2">
+    <div class="hero-container-header">
+      {{game.name}}
+    </div>
+    <span>Data stworzenia: {{game.created | date}}</span>
+    <br>
+    <span>Lokacja: {{game.location}}</span>
+    <br>
+    <span>Status: {{game.status}}</span>
+  </div>
+  <div class="container mat-elevation-z2">
+    <div class="container-header">
+      Gracze
+    </div>
+    <div *ngFor="let i of objectKeys(game.competitors)" routerLink="/user/{{game.competitors[i].user.id}}">
+      {{game.competitors[i].user.name}} - {{game.competitors[i].club.name}}
+    </div>
   </div>
   <button *ngIf="!isSigned()&&isOpen()" mat-button color="warn" (click)="openDialog()">Dołącz</button>
   <button *ngIf="isSigned()&&isOpen()" mat-button color="warn" (click)="openDialog()">Zmień zespół</button>
   <button *ngIf="isSigned()&&isOpen()" mat-button color="warn" (click)="removePlayerFromGame()">Wypisz się</button>
-  <div *ngIf="!isOpen()">
+  <div class="container mat-elevation-z2" *ngIf="!isOpen()">
+    <div class="container-header">
+      Tabela wyników
+    </div>
     <table-details [game]="game"></table-details>
   </div>
-  <div *ngIf="!isOpen()">
-    <div *ngFor="let i of objectKeys(game.schedule)">
-      <contest [contest]="game.schedule[i]" [gameId]="game.id"></contest>
+  <div class="container mat-elevation-z2" *ngIf="!isOpen()">
+    <div class="container-header">
+      Lista meczów
     </div>
-  </div>
-  <div *ngIf="!isOpen()">
-    <div *ngFor="let i of objectKeys(game.schedule)">
+    <div class="mat-elevation-z2" *ngFor="let i of objectKeys(game.schedule)">
       <contest [contest]="game.schedule[i]" [gameId]="game.id"></contest>
     </div>
   </div>
