@@ -16,17 +16,15 @@
       <user-ingress [user]="contest.visitor.user" [club]="contest.visitor.club"></user-ingress>
     </mat-grid-tile>
   </mat-grid-list>
-  Komentarz: {{contest.comment}}
-  <br>
-  {{contest.id}}
-  <!--br>
-  Scheduled: {{contest.scheduled}}-->
-  <br>
-  Updated: {{contest.updated}}
+  Zaktualizowano: {{contest.updated}}
   <br>
   Status: {{contest.status}}
   <br>
-  <!--button mat-button color="primary" (click)="goTo('game-' + contest.rematch)">Idź do rewanżu</button-->
+  <span *ngIf="contest.comment">
+    Komentarz: {{contest.comment}}
+  </span>
+  <br>
+  <button mat-button color="primary" (click)="goTo('game-' + contest.rematch)">Idź do rewanżu</button>
   <div *ngIf="!isPlayed()&&isAuthorized()">
     <button mat-button color="primary" (click)="openDialog()">Opublikuj wynik</button>
   </div>

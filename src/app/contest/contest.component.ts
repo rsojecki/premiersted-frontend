@@ -18,6 +18,7 @@ export class ResultContestComponent {
   @Input() public gameId: string;
 
   constructor(private sanitizer: DomSanitizer, private dialog: MatDialog, private auth: AuthorizationService, private api: ApiService, private changeDetector: ChangeDetectorRef) {
+    console.log(this.contest);
   }
 
   public sanitazeUrl(url: string): SafeStyle {
