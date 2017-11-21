@@ -11,30 +11,17 @@
   <button *ngIf="!isSigned()&&isOpen()" mat-button color="warn" (click)="openDialog()">Dołącz</button>
   <button *ngIf="isSigned()&&isOpen()" mat-button color="warn" (click)="openDialog()">Zmień zespół</button>
   <button *ngIf="isSigned()&&isOpen()" mat-button color="warn" (click)="removePlayerFromGame()">Wypisz się</button>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Competitors
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    {{game.competitors|json}}
-  </mat-expansion-panel>
-  <mat-expansion-panel *ngIf="!isOpen()">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Schedule
-      </mat-panel-title>
-    </mat-expansion-panel-header>
+  <div *ngIf="!isOpen()">
+    <table-details [game]="game"></table-details>
+  </div>
+  <div *ngIf="!isOpen()">
     <div *ngFor="let i of objectKeys(game.schedule)">
       <contest [contest]="game.schedule[i]" [gameId]="game.id"></contest>
     </div>
-  </mat-expansion-panel>
-  <mat-expansion-panel *ngIf="!isOpen()">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Tabela wynków
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <table-details [game]="game"></table-details>
-  </mat-expansion-panel>
+  </div>
+  <div *ngIf="!isOpen()">
+    <div *ngFor="let i of objectKeys(game.schedule)">
+      <contest [contest]="game.schedule[i]" [gameId]="game.id"></contest>
+    </div>
+  </div>
 </div>

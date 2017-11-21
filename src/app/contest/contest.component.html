@@ -4,11 +4,11 @@
       <user-ingress [user]="contest.home.user" [club]="contest.home.club"></user-ingress>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1">
-      <div *ngIf="isPlayed()">
+      <div *ngIf="contest.result">
         {{contest.result.home}}
       </div>
       :
-      <div *ngIf="isPlayed()">
+      <div *ngIf="contest.result">
         {{contest.result.visitor}}
       </div>
     </mat-grid-tile>
@@ -16,19 +16,16 @@
       <user-ingress [user]="contest.visitor.user" [club]="contest.visitor.club"></user-ingress>
     </mat-grid-tile>
   </mat-grid-list>
-  Comments: {{contest.comment}}
+  Zaktualizowano: {{contest.updated}}
   <br>
-  {{contest.id}}
+  Status: {{contest.status}}
   <br>
-  <a (click)="goTo('game-' + contest.rematch)">Jump to rematch</a>
+  <span *ngIf="contest.comment">
+    Komentarz: {{contest.comment}}
+  </span>
   <br>
-  Scheduled: {{contest.scheduled}}
-  <br>
-  Updated: {{contest.updated}}
-  <br>
-  {{contest.status}}
+  <button mat-button color="primary" (click)="goTo('game-' + contest.rematch)">Idź do rewanżu</button>
   <div *ngIf="!isPlayed()&&isAuthorized()">
-    <button mat-raised-button color="primary" (click)="openDialog()">Opublikuj wynik</button>
+    <button mat-button color="primary" (click)="openDialog()">Opublikuj wynik</button>
   </div>
 </div>
-{{contest|json}}

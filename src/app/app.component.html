@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <mat-icon (click)="sidenav.toggle()" style="font-size: 26px">menu</mat-icon>
+  <mat-icon *ngIf="checkAuth()" (click)="sidenav.toggle()" style="font-size: 26px">menu</mat-icon>
   <span>Premiersted</span>
   <span class="example-fill-remaining-space"></span>
   <button mat-raised-button color="accent" (click)="logIn()" *ngIf="!checkAuth()">Log In</button>

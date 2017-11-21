@@ -1,0 +1,49 @@
+#main-image {
+  max-width: 500px;
+  height: auto;
+  background: url('./../img/premiersted_logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+}
+
+#main-content {
+  max-width: 500px;
+  margin: auto;
+  padding: 16px;
+}
+
+.proportion-box {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.proportion-box:before {
+  content: "";
+  display: block;
+  padding-top: 50%;
+}
+
+.proportion-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: white;
+}
+
+.proportion-content div {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.proportion-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color: white
+}
